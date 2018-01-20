@@ -37,3 +37,16 @@ function deleteMovie(id) {
     });
 }
 
+function addMovie(movie) {
+    return new Promise ((resolve, reject) => {
+        $.ajax({
+            url: `${fbURL}.json`,
+            method: "POST",
+            data: JSON.stringify(movie)
+        })
+            .done(movieId => {
+            resolve(movieId);
+        });
+    });
+}
+
