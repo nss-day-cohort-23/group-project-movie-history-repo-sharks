@@ -1,20 +1,22 @@
 'use strict';
 
-console.log("hello");
+const $ = require(`jquery`);
 
 let movieDB = require(`./config/mdb-creds`);
-console.log(movieDB.authDomain);
 let movies = movieDB.apiKey;
 console.log(movies);
+
+function getMovies(searchedMovies) {
+    
+} 
 
 
 
 const fbURL = `https://reposharks.firebaseio.com`;
-const $ = require(`jquery`);
 const firebase = require(`./config/fb-config`);
 const auth = require('./user-factory');
 
-function getMovies(uid) {
+function getUsersMovies(uid) {
     return new Promise ((resolve, reject) => {
         $.ajax({
             url: `${fbURL}.json?orderBy="uid"&equalTo="${uid}"`
@@ -29,7 +31,7 @@ function getMovies(uid) {
     });
 }
 
-function deleteMovie(id) {
+function deleteUsersMovie(id) {
     return new Promise ((resolve, reject) => {
         $.ajax({
             url: `${fbURL}/${id}.json`,
