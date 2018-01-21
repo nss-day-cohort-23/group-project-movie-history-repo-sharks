@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>Repo Sharks</title>
 </head>
 <body>
-    
+    <!-- Nav area: Contains logo, search terms, and log in/sin up -->
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <div class="p-3 mb-2 bg-info text-white">
+            <a class="navbar-brand">Sharky Movie Database</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-dark my-2 my-sm-0" 
+                    type="Search">Search New Movies</button>
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="Search">Search Your Movies</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Log In</button>
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="signup">Sign Up</button>
+        </form>
+        </div>
+    </nav>
+    <div class="watched/unwatched">
+        <div class="p-3 mb-2 bg-warning text-dark">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Unwatched</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Watched</button>
+        </div>
+    </div>
+    <div class="movieCards">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="images/jows.jpg" alt="Movie Poster">
+                        <a href="#" class="card-link" id="delete">Delete</a>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" id="Title">Title</li>
+                            <li class="list-group-item" id="Date Released">Date Released</li>
+                            <li class="list-group-item" id="Cast">Top Billed Cast</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Add To Watchlist</a>
+                            <a href="#" class="card-link">Watched</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="dist/bundle.js"></script>
+  
 </body>
 </html>
