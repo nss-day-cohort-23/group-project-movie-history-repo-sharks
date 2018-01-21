@@ -11,19 +11,23 @@
 <body>
     <!-- Nav area: Contains logo, search terms, and log in/sin up -->
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">Sharky Movie Database</a>
-        <form class="form-inline">
-            <button class="btn btn-outline-success my-2 my-sm-0" 
-                type="Search">Search New Movies</button>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="Search">Search Your Movies</button>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="login">Log In</button>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="signup">Sign Up</button>
+        <div class="p-3 mb-2 bg-info text-white">
+            <a class="navbar-brand">Sharky Movie Database</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-dark my-2 my-sm-0" 
+                    type="Search">Search New Movies</button>
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="Search">Search Your Movies</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Log In</button>
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="signup">Sign Up</button>
         </form>
+        </div>
     </nav>
     <div class="watched/unwatched">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="login">Unwatched</button>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="login">Watched</button>
+        <div class="p-3 mb-2 bg-warning text-dark">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Unwatched</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="login">Watched</button>
+        </div>
     </div>
     <div class="movieCards">
         <div class="container">
