@@ -8,10 +8,11 @@ let movieDB = require(`./config/mdb-creds`);
 let moviesAPIKey = movieDB.apiKey;
 let moviesURL = movieDB.authDomain;
 
+
 function getMovies(searchedMovie) {
     return new Promise ((resolve, reject) => {
         $.ajax({
-            url: `${moviesURL}${moviesAPIKey}&query=${searchedMovie}`
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${moviesAPIKey}&query=${searchedMovie}`
         })
             .done(data => {
             resolve(data);
@@ -22,6 +23,10 @@ function getMovies(searchedMovie) {
         });
     });
 } 
+    
+// getMovies.then ((searchedMovie) => {
+//     console.log(getMovies("forrest gump"));
+// });
 
 // console.log(getMovies("forrest gump"));
 //GOT THIS MESSAGE
@@ -80,4 +85,25 @@ function addMovie(movie) {
 
 firebase.auth().onAuthStateChanged(() => {
     console.log("Who's this?", firebase.auth().currentUser);
+});
+
+$("#signin-btn").click(() => {
+    auth
+        .authUser()
+        .then(function(result) {
+            let user = result.user;
+            console.log("user", user);
+            //have function here that displays user's movies
+        })
+        .catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        });
+});
+
+$("#signout-btn").click( () => {
+    auth.logout()
+    .then( () => {
+        console.log("logged out", firebase.auth().currentUser);
+    });
 });
