@@ -2,6 +2,13 @@
 
 console.log("hello");
 
+let movieDB = require(`./config/mdb-creds`);
+console.log(movieDB.authDomain);
+let movies = movieDB.apiKey;
+console.log(movies);
+
+
+
 const fbURL = `https://reposharks.firebaseio.com`;
 const $ = require(`jquery`);
 const firebase = require(`./config/fb-config`);
