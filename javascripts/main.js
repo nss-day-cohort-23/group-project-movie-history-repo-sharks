@@ -12,7 +12,7 @@ let moviesURL = movieDB.authDomain;
 function getMovies(searchedMovie) {
     return new Promise ((resolve, reject) => {
         $.ajax({
-            url: `https://api.themoviedb.org/3/search/movie?api_key=${moviesAPIKey}&query=${searchedMovie}`
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${moviesAPIKey}&language=en-US&query=${searchedMovie}&page=1&include_adult=false`
         })
             .done(data => {
             resolve(data);
@@ -43,8 +43,8 @@ function getUsersMovies(uid) {
         $.ajax({
             url: `${fbURL}.json?orderBy="uid"&equalTo="${uid}"`
         })
-            .done(movies => {
-                resolve(movies);
+            .done(data => {
+                resolve(data);
             })
             .fail(error => {
                 console.log("somethings gone wrong", error.statusText);
@@ -57,6 +57,7 @@ function deleteUsersMovie(id) {
     return new Promise ((resolve, reject) => {
         $.ajax({
             url: `${fbURL}/${id}.json`,
+            method: `DELETE`
         })
             .done(data => {
                 resolve(data);
