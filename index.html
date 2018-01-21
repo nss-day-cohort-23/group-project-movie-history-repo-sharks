@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <title>Document</title>
 </head>
 <body>
+    <h1>Movie Search</h1>
+    <nav>
+        <input type="text" placeholder="search movies" id="movieSearch">
+        <button id="signin-btn" type="button">Sign In With Google</button>
+        <button id="signout-btn" type="button">Sign Out</button>
+    </nav>
+    <div id="movieSelector">
+            <input type="radio" id="allMovies">All Movies</input>
+            <input type="radio" id="yourMovies">Your Movies
+    </div>
+    <div id="movieOutput">
+
+    </div>
     
     <script src="dist/bundle.js"></script>
 </body>
