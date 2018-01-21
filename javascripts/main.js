@@ -77,3 +77,7 @@ function addMovie(movie) {
 }
 
 //User log in and log out
+
+firebase.auth().onAuthStateChanged(() => {
+    console.log("Who's this?", firebase.auth().currentUser);
+});
