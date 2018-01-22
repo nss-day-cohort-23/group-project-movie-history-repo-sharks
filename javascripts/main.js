@@ -46,7 +46,7 @@ let pressingEnter = (searchedMovie) => {
     var key = e.keyCode;
         if (key === 13) {
             console.log("enter key working");
-            // searchedMovie = userText.value;
+            searchedMovie = userText.value;
             movieFactory.getMovies(searchedMovie);
             // .then 
             userText.value = "";
