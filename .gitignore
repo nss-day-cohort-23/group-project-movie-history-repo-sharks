@@ -1,3 +1,4 @@
 node_modules
 dist/
 javascripts/config/fb-creds.js
+javascripts/config/mdb-creds.js
