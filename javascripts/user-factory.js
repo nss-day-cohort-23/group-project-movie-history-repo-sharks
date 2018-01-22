@@ -13,3 +13,4 @@ module.exports.authUser = () => {
 module.exports.logout = () => {
   return firebase.auth().signOut();
 };
+
