@@ -20,6 +20,21 @@ module.exports.getMovies = (searchedMovie) => {
         });
     });
 }; 
+
+module.exports.getMovieCredits = (movieId) => {
+    return new Promise ((resolve, reject) => {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${moviesAPIKey}&language=en-US&page=1&include_adult=false`
+        })
+            .done(data => {
+            resolve(data);
+        })
+            .fail(error => {
+                console.log("somethings gone wrong", error.statusText);
+                reject(error);
+        });
+    });
+}; 
     
 // getMovies.then ((searchedMovie) => {
 //     console.log(getMovies("forrest gump"));

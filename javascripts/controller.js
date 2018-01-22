@@ -16,9 +16,13 @@ module.exports.pressingEnter = (searchedMovie) => {
         if (key === 13) {
             console.log("enter key working");
             searchedMovie = userText.value;
-            movieFactory.getMovies(searchedMovie);
-            // .then 
+            movieFactory.getMovies(searchedMovie)
+            .then(function(movieData) {
+                console.log("movieData", movieData);
+            });
             userText.value = "";
         }
     });
 };
+
+
