@@ -39,15 +39,15 @@ let getCast = (movieData) => {
         let top3Stars = "";
         let movieCast = movie.cast;
         if (movieCast.length !== 0) {
-        for (let i=0; i < 3; i++) {
-            console.log("movie stars", movieCast[i].name);
-            top3Stars += `${movieCast[i].name}, `;
+            for (let i=0; i < 3; i++) {
+                console.log("movie stars", movieCast[i].name);
+                top3Stars += `${movieCast[i].name}, `;
+            }
         }
-    }
     // outputToDom.printResults();
-    console.log("top 3 stars", top3Stars);
-    outputToDom.printResults(movieData, top3Stars);
-});
+        console.log("top 3 stars", top3Stars);
+        outputToDom.printResults(movieData, top3Stars);
+    });
 };
 
 module.exports.pressingEnter = (searchedMovie) => {
