@@ -43,9 +43,8 @@ module.exports.pressingEnter = (searchedMovie) => {
             .then(function(movieData) {
                 //movieData.forEach(movie => {
                     // getMoviesId(searchedMovie);
-                    console.log("movieObject", movieObject);
-                    console.log("movieData", movieData);
-
+                    console.log(movieData);
+                    outputToDom.printResults(movieData);
                 // });
             });
             userText.value = "";
