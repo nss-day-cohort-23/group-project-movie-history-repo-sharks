@@ -32,6 +32,22 @@ let movieObject = {
 //         console.log("movieIdArray", movieIdArray);
 //     });
 // }
+//find a way to get movie data, get cast and put into movie data object, and 
+module.exports.getCast = (movieId) => {
+    movieFactory.getMovieCredits(movieId)
+    .then(function(movie) {
+        let movieCast = movie.cast;
+        console.log("movie", movie);
+        if (movieCast.length !== 0) {
+        for (let i=0; i < 3; i++) {
+            console.log("movie stars", movieCast[i].name);
+        }
+    }
+    outputToDom.printResults();
+        // for (let i=0; movieCast.cast < 3; i++) {
+        // }
+    });
+};
 
 module.exports.pressingEnter = (searchedMovie) => {
     userText.addEventListener('keypress', function (e) {
