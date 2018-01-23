@@ -55,9 +55,9 @@ module.exports.getUsersMovies = (uid) => {
         $.ajax({
             url: `${fbURL}.json?orderBy="user"&equalTo="${uid}"`
         })
-            .done(data => {
-                console.log('data',data);
-                resolve(data);
+            .done(movies => {
+                console.log('user movies -val', movies);
+                resolve(movies);
             })
             .fail(error => {
                 console.log("somethings gone wrong", error.statusText);

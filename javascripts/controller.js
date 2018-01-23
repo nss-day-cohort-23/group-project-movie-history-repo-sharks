@@ -13,7 +13,7 @@ let userText = document.getElementById("search");
 
 module.exports.addMovieObjectToWatchlist = (movieId, userId) => {
     let userMovieObject = {};
-    userMovieObject.id = movieId;
+    userMovieObject.movieId = movieId;
     userMovieObject.user = userId;
     userMovieObject.watched = false;
     userMovieObject.stars = 0;
