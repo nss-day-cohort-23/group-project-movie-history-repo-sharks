@@ -5,6 +5,7 @@ const fbURL = `https://reposharks.firebaseio.com/movies`;
 const firebase = require(`./config/fb-config`);
 const auth = require('./user-factory');
 let movieFactory = require('./movie-factory');
+let searchedTerm = "";
 let controller = require('./controller');
 
 
@@ -38,18 +39,17 @@ $("#signout-btn").click( () => {
 });
 
 let userText = document.getElementById("search");
-controller.pressingEnter(userText.value);
+// controller.pressingEnter(userText);
 
 $(document).on("click", "#watchlist", function(){
     console.log('hello');
     let currentUser = firebase.auth().currentUser;
     console.log('currentUser',currentUser);
-    if (currentUser != undefined) {
+    if (currentUser) {
         console.log('added to watchlist');
         let movieId = document.getElementById("watchlist").parentNode.id;
         console.log('movieId = ',movieId);
         controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
-        //call function here
     } else
         alert("Please log in to continue..");
 });
@@ -80,6 +80,11 @@ $(document).on("click", "#showWatched", function(){
         console.log("current user", currentUser);
         displayUserMovies(currentUser.uid);
         // controller.getUsersWatchedMovies();
+$(document).on("click", "#showUntracked", function (){
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser){
+        controller.showsUntrackedMovies(searchedTerm, currentUser.uid);
     } else
         alert("Please log in to continue..");
 });
@@ -94,4 +99,20 @@ $(document).on("click", "#showFavorites", function(){
         //call function here
     } else
         alert("Please log in to continue..");
+        
+$(document).on("click", "#showUnwatched", function () {
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+
+    } else
+        alert("Please log in to continue..");
+});
+
+userText.addEventListener("keypress", function (e) {
+    var key = e.keyCode;
+    if (key === 13) {
+        searchedTerm = userText.value;
+        controller.searchedMovie(searchedTerm);
+    }
 });

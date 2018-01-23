@@ -46,12 +46,8 @@ let getCast = movieData => {
   });
 };
 
-module.exports.pressingEnter = searchedMovie => {
-  userText.addEventListener("keypress", function(e) {
-    var key = e.keyCode;
-    if (key === 13) {
-      searchedMovie = userText.value;
-      movieFactory.getMovies(searchedMovie)
+module.exports.searchedMovie = searchedTerm => {
+      movieFactory.getMovies(searchedTerm)
       .then(function(movieData) {
         //possibly make this clear search results a function that you call here.
         let output = document.getElementById("movieCards");
@@ -61,6 +57,13 @@ module.exports.pressingEnter = searchedMovie => {
         }
       });
       userText.value = "";
-    }
+};
+
+module.exports.showsUntrackedMovies = (searchTerm, currentUid) => {
+  console.log('currentUid',currentUid);
+  console.log('searchTerm',searchTerm);
+  movieFactory.getUsersMovies(currentUid)
+  .then((data)=>{
+    console.log('data',data);
   });
 };
