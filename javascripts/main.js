@@ -53,3 +53,29 @@ $(document).on("click", "#watchlist", function(){
     } else
         alert("Please log in to continue..");
 });
+
+$(document).on("click", "#showWatched", function(){
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    console.log('currentUser',currentUser);
+    if (currentUser != undefined) {
+        console.log('pressed watched button');
+
+        //controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
+        //call function here
+    } else
+        alert("Please log in to continue..");
+});
+
+$(document).on("click", "#showFavorites", function(){
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    console.log('currentUser',currentUser);
+    if (currentUser != undefined) {
+        console.log('pressed favorites button');
+
+        //controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
+        //call function here
+    } else
+        alert("Please log in to continue..");
+});
