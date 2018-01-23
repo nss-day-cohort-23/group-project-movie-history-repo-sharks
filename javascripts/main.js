@@ -54,7 +54,36 @@ $(document).on("click", "#watchlist", function(){
         alert("Please log in to continue..");
 });
 
-$(document).on("click", "#showUntracked", function (){
+function listUsersMovies(movieData) {
+    console.log("user movies", movieData);
+    let userMovieArr = [];
+    let keys = Object.keys(movieData);
+    keys.forEach(key => {
+        movieData[key].id = key;
+        userMovieArr.push(movieData[key]);
+    });
+    console.log("user movie arr: ", userMovieArr);
+}
+
+function displayUserMovies(uid) {
+    movieFactory.getUsersMovies(uid)
+    .then(movieData => {
+        listUsersMovies(movieData);
+    });
+}
+
+$(document).on("click", "#showWatched", function(){
+    let currentUser = firebase.auth().currentUser;
+    console.log('currentUser',currentUser);
+    if (currentUser != undefined) {
+        console.log('pressed watched button');
+        console.log("current user", currentUser);
+        displayUserMovies(currentUser.uid);
+        // controller.getUsersWatchedMovies();
+    }
+});
+
+$(document).on("click", "#showUntracked", function () {
     console.log('hello');
     let currentUser = firebase.auth().currentUser;
     if (currentUser){
@@ -62,6 +91,20 @@ $(document).on("click", "#showUntracked", function (){
     } else
         alert("Please log in to continue..");
 });
+
+$(document).on("click", "#showFavorites", function(){
+    let currentUser = firebase.auth().currentUser;
+    console.log('currentUser',currentUser);
+    if (currentUser != undefined) {
+        console.log('pressed favorites button');
+        // controller.
+        //controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
+        //call function here
+    } else
+        alert("Please log in to continue..");
+    });
+
+    
 
 $(document).on("click", "#showUnwatched", function () {
     console.log('hello');

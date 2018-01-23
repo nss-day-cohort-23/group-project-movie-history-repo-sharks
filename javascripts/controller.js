@@ -11,7 +11,7 @@ let outputToDom = require("./outputToDom");
 let userText = document.getElementById("search");
 
 
-module.exports.addMovieObjectToWatchlist = (movieId, userId) =>{
+module.exports.addMovieObjectToWatchlist = (movieId, userId) => {
     let userMovieObject = {};
     userMovieObject.id = movieId;
     userMovieObject.user = userId;
@@ -22,6 +22,13 @@ module.exports.addMovieObjectToWatchlist = (movieId, userId) =>{
         console.log("movie", movie);
     });
 };
+
+// module.exports.getUsersWatchedMovies = (userId) => {
+//     movieFactory.getUsersMovies(uid)
+//     .then(function(movie) {
+//         console.log("users movie", movie);
+//     });
+// };
 
 //find a way to get movie data, get cast and put into movie data object, and
 let getCast = movieData => {
