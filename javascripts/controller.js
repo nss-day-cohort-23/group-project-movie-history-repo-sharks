@@ -9,22 +9,19 @@ let movieFactory = require("./movie-factory");
 let outputToDom = require("./outputToDom");
 
 let userText = document.getElementById("search");
-// let movieObject = {
-//   movieId: "",
-//   title: "",
-//   img: "",
-//   yearReleased: "",
-//   cast: "",
-//   userId: "",
-//   watchlist: false
-// };
-userMovieObject = {}
-module.exports.addMovieIdToWatchlist = (movieId) =>{
-    movieFactory.addMovie(movieId)
+
+
+module.exports.addMovieObjectToWatchlist = (movieId, userId) =>{
+    let userMovieObject = {};
+    userMovieObject.id = movieId;
+    userMovieObject.user = userId;
+    userMovieObject.watched = false;
+    userMovieObject.stars = 0;
+    movieFactory.addMovie(userMovieObject)
     .then(function(movie) {
-        userMovieObject.id = movie;
-    })
-}
+        console.log("movie", movie);
+    });
+};
 
 //find a way to get movie data, get cast and put into movie data object, and
 let getCast = movieData => {

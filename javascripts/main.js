@@ -48,6 +48,7 @@ $(document).on("click", "#watchlist", function(){
         console.log('added to watchlist');
         let movieId = document.getElementById("watchlist").parentNode.id;
         console.log('movieId = ',movieId);
+        controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
         //call function here
     } else
         alert("Please log in to continue..");
