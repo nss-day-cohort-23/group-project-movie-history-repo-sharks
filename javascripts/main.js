@@ -39,3 +39,16 @@ $("#signout-btn").click( () => {
 
 let userText = document.getElementById("search");
 controller.pressingEnter(userText.value);
+
+$(document).on("click", "#watchlist", function(){
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    console.log('currentUser',currentUser);
+    if (currentUser != undefined) {
+        console.log('added to watchlist');
+        let movieId = document.getElementById("watchlist").parentNode.id;
+        console.log('movieId = ',movieId);
+        //call function here
+    } else
+        alert("Please log in to continue..");
+});
