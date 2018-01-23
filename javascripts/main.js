@@ -53,3 +53,21 @@ $(document).on("click", "#watchlist", function(){
     } else
         alert("Please log in to continue..");
 });
+
+$(document).on("click", "#showUntracked", function (){
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser != undefined){
+
+    } else
+        alert("Please log in to continue..");
+});
+
+$(document).on("click", "#showUnwatched", function () {
+    console.log('hello');
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser != undefined) {
+
+    } else
+        alert("Please log in to continue..");
+});
