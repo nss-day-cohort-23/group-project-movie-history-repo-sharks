@@ -53,9 +53,10 @@ const auth = require('./user-factory');
 module.exports.getUsersMovies = (uid) => {
     return new Promise ((resolve, reject) => {
         $.ajax({
-            url: `${fbURL}.json?orderBy="uid"&equalTo="${uid}"`
+            url: `${fbURL}.json?orderBy="user"&equalTo="${uid}"`
         })
             .done(data => {
+                console.log('data',data);
                 resolve(data);
             })
             .fail(error => {
