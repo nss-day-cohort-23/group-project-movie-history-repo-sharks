@@ -81,7 +81,7 @@ module.exports.deleteUsersMovie = (id) => {
     });
 };
 
-module.exports.addMovie = (movie) =>{
+module.exports.addMovie = (movieId) =>{
     return new Promise ((resolve, reject) => {
         $.ajax({
             url: `${fbURL}.json`,
