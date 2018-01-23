@@ -80,7 +80,10 @@ $(document).on("click", "#showWatched", function(){
         console.log("current user", currentUser);
         displayUserMovies(currentUser.uid);
         // controller.getUsersWatchedMovies();
-$(document).on("click", "#showUntracked", function (){
+    }
+});
+
+$(document).on("click", "#showUntracked", function () {
     console.log('hello');
     let currentUser = firebase.auth().currentUser;
     if (currentUser){
@@ -99,7 +102,10 @@ $(document).on("click", "#showFavorites", function(){
         //call function here
     } else
         alert("Please log in to continue..");
-        
+    });
+
+    
+
 $(document).on("click", "#showUnwatched", function () {
     console.log('hello');
     let currentUser = firebase.auth().currentUser;
