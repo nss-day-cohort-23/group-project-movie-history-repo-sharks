@@ -9,31 +9,24 @@ let movieFactory = require("./movie-factory");
 let outputToDom = require("./outputToDom");
 
 let userText = document.getElementById("search");
-let movieObject = {
-  movieId: "",
-  title: "",
-  img: "",
-  yearReleased: "",
-  cast: "",
-  userId: "",
-  watchlist: false
+
+
+module.exports.addMovieObjectToWatchlist = (movieId, userId) =>{
+    let userMovieObject = {};
+    userMovieObject.id = movieId;
+    userMovieObject.user = userId;
+    userMovieObject.watched = false;
+    userMovieObject.stars = 0;
+    movieFactory.addMovie(userMovieObject)
+    .then(function(movie) {
+        console.log("movie", movie);
+    });
 };
 
-//want to get movie id from search results
-
-// let movieIdArray = [];
-
-// function getMoviesId(searchedMovie) {
-//     let keys = Object.keys(searchedMovie);
-//     keys.forEach(key => {
-//         searchedMovie[key].id = key;
-//         movieIdArray.push(searchedMovie[key]);
-//         console.log("movieIdArray", movieIdArray);
-//     });
-// }
 //find a way to get movie data, get cast and put into movie data object, and
 let getCast = movieData => {
-  movieFactory.getMovieCredits(movieData.id).then(function(movie) {
+  movieFactory.getMovieCredits(movieData.id)
+  .then(function(movie) {
     let top3Stars = "";
     let movieCast = movie.cast;
     if (movieCast.length !== 0) {
@@ -51,7 +44,8 @@ module.exports.pressingEnter = searchedMovie => {
     var key = e.keyCode;
     if (key === 13) {
       searchedMovie = userText.value;
-      movieFactory.getMovies(searchedMovie).then(function(movieData) {
+      movieFactory.getMovies(searchedMovie)
+      .then(function(movieData) {
         //possibly make this clear search results a function that you call here.
         let output = document.getElementById("movieCards");
         output.innerHTML = "";
