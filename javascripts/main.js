@@ -46,8 +46,10 @@ $(document).on("click", ".watchlist", function(event){
     if (currentUser) {
         console.log('added to watchlist');
         let movieId = $(event.target).parent().attr("id");
+        let movieTitle = $(event.target).parent().attr("title");
         console.log('movieId = ',movieId);
-        // controller.addMovieObjectToWatchlist(movieId, currentUser.uid, movieTitle);
+        console.log("movieTitle = ",movieTitle);
+        controller.addMovieObjectToWatchlist(movieId, currentUser.uid, movieTitle);
     } else
     alert("Please log in to continue..");
 });
