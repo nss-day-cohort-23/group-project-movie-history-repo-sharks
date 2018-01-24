@@ -7,6 +7,7 @@ const auth = require('./user-factory');
 let movieFactory = require('./movie-factory');
 let searchedTerm = "";
 let controller = require('./controller');
+let rate = require('./rate');
 
 
 //User log in and log out
@@ -120,6 +121,20 @@ userText.addEventListener("keypress", function (e) {
     }
 });
 
-$('.rate').click(()=>{
-    console.log('stars clicked');
+
+//User Clicks star rating 
+$(document).on("click", ".rate", function () {
+
+// Gets rating value from getRating func
+let ratingVal = rate.getRating(this);
+console.log('stars clicked');
+let currentUser = firebase.auth().currentUser;
+// If user is logged in 
+if (currentUser) {
+    console.log('added to stars');
+    console.log('star rating = ', ratingVal);
+// This is where we need to pass the val of the rating to the function that adds movies to the watched/rated list
+} else
+    alert("Please log in to continue..");
+
 });
