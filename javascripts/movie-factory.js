@@ -1,6 +1,6 @@
 'use strict';
 
-let $ = require('jquery');
+// let $ = require('jquery');
 //Movie Database Module
 let movieDB = require(`./config/mdb-creds`);
 let moviesAPIKey = movieDB.apiKey;
