@@ -29,5 +29,5 @@ module.exports.printResults = (movie, cast) => {
             // </div>
         );
         rate.rateYo();
-        rate.getRating();
+       
 };

@@ -7,6 +7,7 @@ const auth = require('./user-factory');
 let movieFactory = require('./movie-factory');
 let searchedTerm = "";
 let controller = require('./controller');
+let rate = require('./rate');
 
 
 //User log in and log out
@@ -122,6 +123,18 @@ userText.addEventListener("keypress", function (e) {
     }
 });
 
-$('.rate').click(()=>{
-    console.log('stars clicked');
+
+$(document).on("click", ".rate", function () {
+let ratingVal = rate.getRating(this);
+
+console.log('stars clicked');
+let currentUser = firebase.auth().currentUser;
+if (currentUser) {
+    console.log('added to stars');
+    // let rateId = 
+    console.log('star rating = ', ratingVal);
+    controller.addMovieObjectToWatchlist(ratingVal, currentUser.uid);
+} else
+    alert("Please log in to continue..");
+
 });
