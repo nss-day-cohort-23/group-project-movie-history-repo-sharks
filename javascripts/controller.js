@@ -41,7 +41,7 @@ let getCast = movieData => {
         top3Stars += `${movieCast[i].name}, `;
       }
     }
-    console.log(movieData);
+    // console.log(movieData);
     outputToDom.printResults(movieData, top3Stars);
   });
 };
