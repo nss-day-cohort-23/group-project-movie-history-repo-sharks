@@ -73,8 +73,15 @@ module.exports.showUnwatchedMovies = (searchTerm, currentUid) => {
       if(userMovies[movie].movieTitle.includes(searchTerm)) {
         if(userMovies[movie].watched === false) {
           console.log("Found movie", userMovies[movie].movieTitle);
+          movieFactory.getMovie(userMovies[movie].movieId)
+          .then(movie => {
+            console.log("movie data", movie);
+            getCast(movie);
+          });
         }
       }
     });
   });
 };
+
+

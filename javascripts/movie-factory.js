@@ -5,7 +5,7 @@
 let movieDB = require(`./config/mdb-creds`);
 let moviesAPIKey = movieDB.apiKey;
 
-
+//Gets movies from tmdb using a key word
 module.exports.getMovies = (searchedMovie) => {
     return new Promise ((resolve, reject) => {
         $.ajax({
@@ -19,8 +19,22 @@ module.exports.getMovies = (searchedMovie) => {
                 reject(error);
         });
     });
-}; 
+};
 
+//Gets ONE movie from tmdb using movie id
+module.exports.getMovie = (movieId) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${moviesAPIKey}`
+        }).done(movie => {
+            resolve(movie);
+        }).fail(error => {
+            reject(error);
+        });
+    });
+};
+
+//Gets credits from tmdb for one movie using movie id
 module.exports.getMovieCredits = (movieId) => {
     return new Promise ((resolve, reject) => {
         $.ajax({
