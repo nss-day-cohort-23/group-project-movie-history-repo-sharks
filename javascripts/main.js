@@ -41,13 +41,12 @@ $("#signout-btn").click( () => {
 let userText = document.getElementById("search");
 // controller.pressingEnter(userText);
 
-$(document).on("click", "#watchlist", function(){
-    console.log('hello');
+$(document).on("click", ".watchlist", function(event){
     let currentUser = firebase.auth().currentUser;
-    console.log('currentUser',currentUser);
+    event.preventDefault();
     if (currentUser) {
         console.log('added to watchlist');
-        let movieId = document.getElementById("watchlist").parentNode.id;
+        let movieId = $(event.target).parent().attr("id");
         console.log('movieId = ',movieId);
         controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
     } else
