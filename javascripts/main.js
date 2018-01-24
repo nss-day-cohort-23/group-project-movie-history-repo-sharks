@@ -38,8 +38,7 @@ $("#signout-btn").click( () => {
     });
 });
 
-let userText = document.getElementById("search");
-// controller.pressingEnter(userText);
+
 
 $(document).on("click", ".watchlist", function(event){
     let currentUser = firebase.auth().currentUser;
@@ -47,10 +46,12 @@ $(document).on("click", ".watchlist", function(event){
     if (currentUser) {
         console.log('added to watchlist');
         let movieId = $(event.target).parent().attr("id");
+        let movieTitle = $(event.target).parent().attr("title");
         console.log('movieId = ',movieId);
-        controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
+        console.log("movieTitle = ",movieTitle);
+        controller.addMovieObjectToWatchlist(movieId, currentUser.uid, movieTitle);
     } else
-        alert("Please log in to continue..");
+    alert("Please log in to continue..");
 });
 
 function listUsersMovies(movieData) {
@@ -82,13 +83,13 @@ $(document).on("click", "#showWatched", function(){
     }
 });
 
+//User clicked on "show untracked button"
 $(document).on("click", "#showUntracked", function () {
-    console.log('hello');
     let currentUser = firebase.auth().currentUser;
     if (currentUser){
-        controller.showsUntrackedMovies(searchedTerm, currentUser.uid);
+
     } else
-        alert("Please log in to continue..");
+    alert("Please log in to continue..");
 });
 
 $(document).on("click", "#showFavorites", function(){
@@ -96,24 +97,21 @@ $(document).on("click", "#showFavorites", function(){
     console.log('currentUser',currentUser);
     if (currentUser != undefined) {
         console.log('pressed favorites button');
-        // controller.
-        //controller.addMovieObjectToWatchlist(movieId, currentUser.uid);
-        //call function here
     } else
-        alert("Please log in to continue..");
-    });
-
-    
-
-$(document).on("click", "#showUnwatched", function () {
-    console.log('hello');
-    let currentUser = firebase.auth().currentUser;
-    if (currentUser) {
-
-    } else
-        alert("Please log in to continue..");
+    alert("Please log in to continue..");
 });
 
+
+//User clicked on "show unwatched button"
+$(document).on("click", "#showUnwatched", function () {
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+        controller.showUnwatchedMovies(searchedTerm, currentUser.uid);  
+    } else
+    alert("Please log in to continue..");
+});
+
+let userText = document.getElementById("search");
 userText.addEventListener("keypress", function (e) {
     var key = e.keyCode;
     if (key === 13) {

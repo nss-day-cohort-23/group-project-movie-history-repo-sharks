@@ -8,16 +8,19 @@
 let movieFactory = require("./movie-factory");
 let outputToDom = require("./outputToDom");
 
+
 let userText = document.getElementById("search");
 
 
-module.exports.addMovieObjectToWatchlist = (movieId, userId) => {
-    let userMovieObject = {};
-    userMovieObject.movieId = movieId;
-    userMovieObject.user = userId;
-    userMovieObject.watched = false;
-    userMovieObject.stars = 0;
-    movieFactory.addMovie(userMovieObject)
+module.exports.addMovieObjectToWatchlist = (movieId, userId, movieTitle) => {
+  let userMovieObject = {
+    movieTitle : movieTitle,
+    movieId : movieId,
+    user : userId,
+    watched : false,
+    stars : 0
+  };
+  movieFactory.addMovie(userMovieObject)
     .then(function(movie) {
         console.log("movie", movie);
     });
@@ -56,14 +59,22 @@ module.exports.searchedMovie = searchedTerm => {
           getCast(movieData.results[i]);
         }
       });
-      userText.value = "";
 };
 
-module.exports.showsUntrackedMovies = (searchTerm, currentUid) => {
-  console.log('currentUid',currentUid);
+module.exports.showUnwatchedMovies = (searchTerm, currentUid) => {
+  $("#movieCards").empty();
   console.log('searchTerm',searchTerm);
   movieFactory.getUsersMovies(currentUid)
-  .then((data)=>{
-    console.log('data',data);
+  .then((userMovies)=>{
+    console.log('userMovies',userMovies);
+    let movieKeys = Object.keys(userMovies);
+    console.log("movieKeys", movieKeys);
+    movieKeys.forEach(movie => {
+      if(userMovies[movie].movieTitle.includes(searchTerm)) {
+        if(userMovies[movie].watched === false) {
+          console.log("Found movie", userMovies[movie].movieTitle);
+        }
+      }
+    });
   });
 };
