@@ -122,16 +122,18 @@ userText.addEventListener("keypress", function (e) {
 });
 
 
+//User Clicks star rating 
 $(document).on("click", ".rate", function () {
-let ratingVal = rate.getRating(this);
 
+// Gets rating value from getRating func
+let ratingVal = rate.getRating(this);
 console.log('stars clicked');
 let currentUser = firebase.auth().currentUser;
+// If user is logged in 
 if (currentUser) {
     console.log('added to stars');
-    // let rateId = 
     console.log('star rating = ', ratingVal);
-    controller.addMovieObjectToWatchlist(ratingVal, currentUser.uid);
+// This is where we need to pass the val of the rating to the function that adds movies to the watched/rated list
 } else
     alert("Please log in to continue..");
 
