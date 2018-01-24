@@ -19,7 +19,7 @@ module.exports.printResults = (movie, cast) => {
                                 <li class="list-group-item" id="Date Released">${movie.release_date}</li>
                                 <li class="list-group-item" id="Cast">${cast}</li>
                             </ul>
-                            <div class="card-body" id=${+movie.id}>
+                            <div class="card-body" id=${+movie.id} title="${movie.title}">
                                 <a href="#" class="watchlist">Add To Watchlist</a>
                             </div>
                             <div class="rate" id${+movie.id}></div>
