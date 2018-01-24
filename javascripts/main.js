@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = require(`jquery`);
+// const $ = require(`jquery`);
 const fbURL = `https://reposharks.firebaseio.com/movies`;
 const firebase = require(`./config/fb-config`);
 const auth = require('./user-factory');
@@ -121,4 +121,8 @@ userText.addEventListener("keypress", function (e) {
         searchedTerm = userText.value;
         controller.searchedMovie(searchedTerm);
     }
+});
+
+$('.rate').click(()=>{
+    console.log('stars clicked');
 });

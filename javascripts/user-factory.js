@@ -9,7 +9,7 @@ module.exports.authUser = () => {
     .auth()
     .signInWithPopup(provider);
 };
-
+ 
 module.exports.logout = () => {
   return firebase.auth().signOut();
 };
