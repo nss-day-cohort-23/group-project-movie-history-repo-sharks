@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = require(`jquery`);
+// const $ = require(`jquery`);
 const fbURL = `https://reposharks.firebaseio.com/movies`;
 const firebase = require(`./config/fb-config`);
 const auth = require('./user-factory');
@@ -40,17 +40,14 @@ $("#signout-btn").click( () => {
 
 
 
-$(document).on("click", "#watchlist", function(){
-    console.log('hello');
+$(document).on("click", ".watchlist", function(event){
     let currentUser = firebase.auth().currentUser;
-    console.log('currentUser',currentUser);
+    event.preventDefault();
     if (currentUser) {
         console.log('added to watchlist');
-        console.log("parentNode", document.getElementById("watchlist").parentNode);
-        let movieId = document.getElementById("watchlist").parentNode.id;
-        let movieTitle = document.getElementById("watchlist").parentNode.title;
+        let movieId = $(event.target).parent().attr("id");
         console.log('movieId = ',movieId);
-        controller.addMovieObjectToWatchlist(movieId, currentUser.uid, movieTitle);
+        // controller.addMovieObjectToWatchlist(movieId, currentUser.uid, movieTitle);
     } else
     alert("Please log in to continue..");
 });
@@ -119,4 +116,8 @@ userText.addEventListener("keypress", function (e) {
         searchedTerm = userText.value;
         controller.searchedMovie(searchedTerm);
     }
+});
+
+$('.rate').click(()=>{
+    console.log('stars clicked');
 });

@@ -7,7 +7,7 @@
 //probably gonna have to have a if "#yourMovies" is checked, run function that gets your movies, else run get new movies function
 let movieFactory = require("./movie-factory");
 let outputToDom = require("./outputToDom");
-const $ = require("jquery");
+
 
 let userText = document.getElementById("search");
 
@@ -44,6 +44,7 @@ let getCast = movieData => {
         top3Stars += `${movieCast[i].name}, `;
       }
     }
+    // console.log(movieData);
     outputToDom.printResults(movieData, top3Stars);
   });
 };
